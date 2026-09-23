@@ -1,0 +1,23 @@
+# Secrets — ship .env.example only
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+dist/
+
+# output/audit_trail.json is tracked on purpose — it is part of the project's
+# audit trail. Only the write sidecars are ignored.
+output/audit_trail.tmp
+output/audit_trail.corrupt.json
+
+.DS_Store
+
+# Source archive, not part of the project
+*.zip

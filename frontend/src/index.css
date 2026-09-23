@@ -1,0 +1,142 @@
+/* Yale SOM Course Explorer — Dragon Ball Z palette
+   Goku orange (gi) + Vegeta blue (armor), on deep space navy. */
+
+:root {
+  /* Goku */
+  --goku-500: #ff6b1a;
+  --goku-600: #ea5a0b;
+  --goku-400: #ff8a47;
+
+  /* Vegeta */
+  --vegeta-500: #2b4fc7;
+  --vegeta-600: #1e3aa8;
+  --vegeta-400: #4a6ddb;
+  --vegeta-300: #7d97ec;
+
+  /* Super Saiyan accent */
+  --ss-gold: #ffc531;
+
+  /* Surfaces */
+  --bg-deep: #080c1a;
+  --bg: #0d1326;
+  --surface: #141c33;
+  --surface-2: #1b2442;
+  --border: #26314f;
+  --border-lit: #3a4870;
+
+  /* Type */
+  --text: #eaeefa;
+  --text-dim: #9aa6c6;
+  --text-faint: #6f7b9c;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.75);
+
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.55;
+  color: var(--text);
+  background-color: var(--bg-deep);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(900px 480px at 12% -8%, rgba(255, 107, 26, 0.16), transparent 62%),
+    radial-gradient(820px 460px at 92% 4%, rgba(43, 79, 199, 0.22), transparent 60%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 46%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--vegeta-300);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--goku-400);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ss-gold);
+  outline-offset: 2px;
+}
+
+/* Scrollbars tuned to the palette */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-2) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 99px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--vegeta-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
