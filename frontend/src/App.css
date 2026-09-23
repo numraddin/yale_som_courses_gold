@@ -378,6 +378,25 @@
   color: var(--text-dim);
 }
 
+.chat__gate {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.chat__gate-copy {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.chat__gate-error {
+  margin: 8px 0 0;
+  font-size: 0.78rem;
+  color: #ffd9c4;
+}
+
 .chat__log {
   flex: 1;
   overflow-y: auto;

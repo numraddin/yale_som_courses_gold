@@ -2,6 +2,9 @@
 .env
 .env.*
 !.env.example
+# Not a secret: build-time config for the production bundle (no keys, and Vite
+# inlines VITE_* into the public JS anyway).
+!frontend/.env.production
 
 # Python
 .venv/

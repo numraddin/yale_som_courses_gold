@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+**/.venv
+**/__pycache__
+**/*.pyc
+.git
+.env
+.env.*
+!frontend/.env.production
+output
+*.zip
+.DS_Store

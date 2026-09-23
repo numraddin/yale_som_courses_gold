@@ -6,7 +6,31 @@
  * works with the normalized `Course` returned by `toCourse`.
  */
 
+// In production the FastAPI app serves this bundle, so an empty base keeps
+// requests same-origin. Vite dev runs on :5173 and needs the explicit backend.
 const BASE = import.meta.env.VITE_API_BASE ?? 'http://127.0.0.1:8000'
+
+const PASSWORD_KEY = 'somcourses.password'
+
+export function getPassword(): string {
+  return localStorage.getItem(PASSWORD_KEY) ?? ''
+}
+
+export function setPassword(value: string): void {
+  localStorage.setItem(PASSWORD_KEY, value)
+}
+
+export function clearPassword(): void {
+  localStorage.removeItem(PASSWORD_KEY)
+}
+
+/** Thrown when the backend rejects the shared password, so the UI can re-prompt. */
+export class UnauthorizedError extends Error {
+  constructor() {
+    super('That password was not accepted.')
+    this.name = 'UnauthorizedError'
+  }
+}
 
 export interface RawCourse {
   'Course ID': string
@@ -79,6 +103,9 @@ export function toCourse(raw: RawCourse, index: number): Course {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, init)
+  if (res.status === 401) {
+    throw new UnauthorizedError()
+  }
   if (!res.ok) {
     throw new Error(`${res.status} ${res.statusText} — ${path}`)
   }
@@ -96,11 +123,15 @@ export async function fetchCourses(q?: string): Promise<Course[]> {
 export async function sendChat(message: string): Promise<ChatResponse> {
   return request<ChatResponse>('/api/chat', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'X-App-Password': getPassword() },
     body: JSON.stringify({ message }),
   })
 }
 
 export async function fetchHealth(): Promise<{ ok: boolean }> {
   return request<{ ok: boolean }>('/api/health')
+}
+
+export async function fetchConfig(): Promise<{ password_required: boolean }> {
+  return request<{ password_required: boolean }>('/api/config')
 }

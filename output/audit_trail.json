@@ -450,5 +450,21 @@
     ],
     "reply": "The catalog lists **two courses covering negotiation**:\n\n- **MGT 887 — Negotiations**  \n  **Faculty:** Erin Frey  \n  **Session:** Fall 1 · 2 units  \n  **Sections:** Monday 2:35–5:35 PM; Tuesday 8:30–11:25 AM; Tuesday 1:00–3:55 PM; Wednesday 8:30–11:25 AM\n\n- **MGT 880 — Sales and Negotiation: Figure Out the Other Side**  \n  **Faculty:** Daylian Cain  \n  **Session:** Fall 2 · 2 units  \n  **Sections:** Wednesday 8:30–11:25 AM; Wednesday 1:00–3:55 PM",
     "stop_reason": "stop"
+  },
+  {
+    "time": "2026-09-23T15:14:02.609129+00:00",
+    "user_message": "Name one negotiation course, briefly.",
+    "thoughts": [],
+    "tool_calls": [
+      {
+        "tool": "search_courses",
+        "args": {
+          "query": "negotiation"
+        },
+        "result_summary": "{\"query\": \"negotiation\", \"units\": null, \"total_matched\": 6, \"returned\": 6, \"truncated\": false, \"courses\": [{\"course_number\": \"MGT 880\", \"title\": \"Sales and Negotiation: Figure Out the Other Side\", \"faculty\": \"Cain, Daylian\", \"faculty_email\": \"daylian.cain@yale.edu\", \"daytimes\": \"W 8:30 AM-11:25 AM\",…"
+      }
+    ],
+    "reply": "**MGT 887: Negotiations** — taught by Erin Frey, meeting Mondays 2:35–5:35 PM.",
+    "stop_reason": "stop"
   }
 ]

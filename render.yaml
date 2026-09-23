@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: yale-som-courses-gold
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      # Both are set in the Render dashboard, never committed.
+      - key: PORTKEY_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
